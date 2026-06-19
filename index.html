@@ -14,42 +14,33 @@ body{font-family:'Sarabun','TH Sarabun New','Segoe UI',sans-serif;font-size:12px
 .today-panel{background:#fff;border-left:4px solid #f59e0b;margin:10px 20px;padding:10px 14px;border-radius:6px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .today-panel .tp-date{font-size:13px;font-weight:600;color:#1F4E79;min-width:110px}
 .today-panel .tp-tasks{font-size:12px;color:#333}
-.today-panel .tp-tasks span{display:inline-flex;align-items:center;gap:4px;background:#eef3fc;color:#1F4E79;padding:2px 8px;border-radius:10px;margin:2px 3px;font-weight:500}
+.today-panel .tp-tasks span{display:inline-flex;align-items:center;gap:4px;background:#eef3fc;color:#1F4E79;padding:2px 8px;border-radius:10px;margin:2px 3px;font-weight:500;cursor:pointer}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 20px 6px;background:#fff;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0}
 .li{display:flex;align-items:center;gap:4px;font-size:11px;color:#555}
 .ld{width:12px;height:12px;border-radius:2px;flex-shrink:0}
 .wrap{overflow-x:auto;padding:12px 20px 40px}
-.gantt{min-width:1200px;background:#fff;border:1px solid #ddd;border-radius:8px;overflow:visible;position:relative}
-.hdr-top{display:flex;margin-left:280px}
-.month-hdr{text-align:center;font-size:12px;font-weight:600;padding:6px 0;border-right:1px solid #bbb;border-bottom:1px solid #bbb;color:#fff}
-.days-row{display:flex;margin-left:280px;border-bottom:2px solid #333;position:relative}
-.dc{text-align:center;font-size:9px;color:#888;border-right:1px solid #eee;padding:3px 0;flex-shrink:0;background:#fff}
-.dc.wk{background:#f7f7f7;color:#bbb}
-.dc.td{background:#f59e0b;color:#fff;font-weight:700;font-size:10px}
-.phase-hdr{display:flex;background:#eef2f7;border-bottom:1px solid #d0d8e4;padding:5px 0 5px 8px}
-.ph-label{width:280px;font-size:12px;font-weight:600}
-.task-row{display:flex;align-items:center;min-height:32px;border-bottom:0.5px solid #f0f0f0;position:relative;cursor:default}
+.gantt{background:#fff;border:1px solid #ddd;border-radius:8px;overflow:visible;position:relative;width:fit-content;min-width:100%}
+.task-row{display:flex;align-items:center;min-height:32px;border-bottom:0.5px solid #f0f0f0;position:relative}
 .task-row:hover{background:#f8fafc}
-.tl{width:280px;min-width:280px;padding:4px 8px;display:flex;gap:6px;align-items:flex-start;border-right:1px solid #e8e8e8;z-index:1;background:inherit;cursor:pointer}
+.tl{width:280px;min-width:280px;padding:4px 8px;display:flex;gap:6px;align-items:flex-start;border-right:1px solid #e8e8e8;position:sticky;left:0;background:inherit;z-index:5;cursor:pointer}
 .tl:hover{background:#eef3fc}
 .tl:hover .tnm{color:#1F4E79;text-decoration:underline}
 .tno{font-size:11px;font-weight:700;color:#888;min-width:30px;padding-top:1px}
 .tnm{font-size:12px;color:#222;line-height:1.35}
-.tbars{position:relative;flex:1;min-height:32px;overflow:visible}
+.tbars{position:relative;min-height:32px;flex-shrink:0}
 .bar{position:absolute;height:20px;border-radius:4px;top:50%;transform:translateY(-50%);display:flex;align-items:center;padding:0 6px;font-size:11px;font-weight:500;color:#fff;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:filter .15s,box-shadow .15s}
-.bar:hover{filter:brightness(1.1);box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:10;overflow:visible}
+.bar:hover{filter:brightness(1.12);box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:10;overflow:visible}
 .bar.active{box-shadow:0 0 0 3px rgba(255,255,255,.8),0 0 0 5px #1F4E79;z-index:20}
-.ms{width:14px!important;height:14px!important;transform:translateY(-50%) rotate(45deg)!important;border-radius:3px!important;padding:0!important;cursor:pointer}
-.today-line{position:absolute;top:0;bottom:0;width:2px;background:#f59e0b;z-index:50;pointer-events:none}
-.today-flag{position:absolute;top:-22px;background:#f59e0b;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap;transform:translateX(-50%)}
-
-/* Detail panel */
+.ms{width:14px!important;height:14px!important;transform:translateY(-50%) rotate(45deg)!important;border-radius:3px!important;padding:0!important}
+.today-line{position:absolute;top:0;bottom:0;width:2px;background:#f59e0b;opacity:.85;pointer-events:none;z-index:4}
+.phase-hdr{display:flex;background:#eef2f7;border-bottom:1px solid #d0d8e4;position:sticky;left:0}
+.ph-label{font-size:12px;font-weight:600;padding:5px 8px}
 #detail-panel{position:fixed;top:0;right:-420px;width:420px;height:100vh;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);transition:right .3s ease;z-index:999;display:flex;flex-direction:column;overflow:hidden}
 #detail-panel.open{right:0}
-.dp-header{background:#1F4E79;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}
+.dp-header{color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}
 .dp-no{font-size:13px;font-weight:700;opacity:.8}
 .dp-title{font-size:14px;font-weight:600;margin-top:2px;line-height:1.4}
-.dp-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;flex-shrink:0;margin-left:8px;display:flex;align-items:center;justify-content:center}
+.dp-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;margin-left:8px;display:flex;align-items:center;justify-content:center}
 .dp-close:hover{background:rgba(255,255,255,.35)}
 .dp-body{padding:14px 16px;overflow-y:auto;flex:1}
 .dp-section{margin-bottom:14px}
@@ -62,54 +53,44 @@ body{font-family:'Sarabun','TH Sarabun New','Segoe UI',sans-serif;font-size:12px
 .dp-deliv{list-style:none}
 .dp-deliv li{font-size:12px;color:#333;padding:5px 0;border-bottom:0.5px solid #f0f0f0;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
 .dp-deliv li::before{content:"📄";font-size:12px;flex-shrink:0;margin-top:1px}
-.dp-deliv li.uat-item::before{content:"✅"}
-.dp-deliv li.note-item::before{content:"ℹ️"}
 .dp-status-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600}
 .chip-done{background:#d1fae5;color:#065f46}
 .chip-active{background:#fef3c7;color:#92400e}
 .chip-pending{background:#f1f5f9;color:#475569}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:998;display:none}
 .overlay.open{display:block}
+.wk-col{background:#f7f7f7}
+.td-col{background:rgba(245,158,11,.12)}
 </style>
 </head>
 <body>
-
 <div class="page-header">
   <div>
     <h1>ปฏิทินกิจกรรม SI-PMS — งวด 3 &amp; 4</h1>
-    <p>มิถุนายน – กันยายน 2569 &nbsp;|&nbsp; 24 กิจกรรม &nbsp;|&nbsp; คลิกที่แต่ละกิจกรรมเพื่อดูรายละเอียด</p>
+    <p>มิถุนายน – กันยายน 2569 &nbsp;|&nbsp; 24 กิจกรรม &nbsp;|&nbsp; คลิกที่ชื่อหรือ bar เพื่อดูรายละเอียด</p>
   </div>
-  <span class="today-badge" id="today-badge">📅 วันนี้ 20 มิ.ย. 2569</span>
+  <span class="today-badge">📅 วันนี้ 20 มิ.ย. 2569</span>
 </div>
-
-<div class="today-panel" id="today-panel">
+<div class="today-panel">
   <div class="tp-date">📌 วันนี้กำลังดำเนินการ:</div>
   <div class="tp-tasks" id="today-tasks">—</div>
 </div>
-
 <div class="legend">
-  <span class="li"><span class="ld" style="background:#3266ad"></span>ประชุม / วางแผน</span>
-  <span class="li"><span class="ld" style="background:#1a7a4a"></span>พัฒนาระบบ (Dev)</span>
-  <span class="li"><span class="ld" style="background:#d97706"></span>SIT / ติดตั้ง</span>
-  <span class="li"><span class="ld" style="background:#c0392b"></span>UAT Test</span>
-  <span class="li"><span class="ld" style="background:#7c3aed"></span>Integration / Security</span>
-  <span class="li"><span class="ld" style="background:#0891b2"></span>Deploy / Production</span>
-  <span class="li"><span class="ld" style="background:#0d7a5f"></span>คู่มือ / Training</span>
-  <span class="li"><span class="ld" style="background:#64748b"></span>เอกสาร / สรุป</span>
-  <span class="li"><span class="ld" style="background:#f59e0b;transform:rotate(45deg)"></span>ส่งมอบ (Milestone)</span>
+  <span class="li"><span class="ld" style="background:#3266ad"></span>ประชุม/วางแผน</span>
+  <span class="li"><span class="ld" style="background:#1a7a4a"></span>Dev</span>
+  <span class="li"><span class="ld" style="background:#d97706"></span>SIT/ติดตั้ง</span>
+  <span class="li"><span class="ld" style="background:#c0392b"></span>UAT</span>
+  <span class="li"><span class="ld" style="background:#7c3aed"></span>Integration/Security</span>
+  <span class="li"><span class="ld" style="background:#0891b2"></span>Deploy</span>
+  <span class="li"><span class="ld" style="background:#0d7a5f"></span>Training/คู่มือ</span>
+  <span class="li"><span class="ld" style="background:#64748b"></span>เอกสาร</span>
+  <span class="li"><span class="ld" style="background:#f59e0b;transform:rotate(45deg)"></span>Milestone</span>
 </div>
-
-<div class="wrap">
-  <div class="gantt" id="gantt"></div>
-</div>
-
+<div class="wrap"><div class="gantt" id="gantt"></div></div>
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
 <div id="detail-panel">
   <div class="dp-header" id="dp-header">
-    <div style="flex:1">
-      <div class="dp-no" id="dp-no"></div>
-      <div class="dp-title" id="dp-title"></div>
-    </div>
+    <div style="flex:1"><div class="dp-no" id="dp-no"></div><div class="dp-title" id="dp-title"></div></div>
     <button class="dp-close" onclick="closePanel()">✕</button>
   </div>
   <div class="dp-body">
@@ -118,224 +99,128 @@ body{font-family:'Sarabun','TH Sarabun New','Segoe UI',sans-serif;font-size:12px
       <div class="dp-date-box"><div class="dbl">วันเริ่มต้น</div><div class="dbv" id="dp-start"></div></div>
       <div class="dp-date-box"><div class="dbl">วันสิ้นสุด</div><div class="dbv" id="dp-end"></div></div>
     </div>
-    <div class="dp-section">
-      <h3>ผู้รับผิดชอบ</h3>
-      <div class="dp-resp" id="dp-resp"></div>
-    </div>
-    <div class="dp-section">
-      <h3>สิ่งที่ส่งมอบ</h3>
-      <ul class="dp-deliv" id="dp-deliv"></ul>
-    </div>
-    <div class="dp-section" id="dp-detail-section" style="display:none">
-      <h3>หมายเหตุ</h3>
-      <div id="dp-detail" style="font-size:12px;color:#444;line-height:1.6"></div>
-    </div>
+    <div class="dp-section"><h3>ผู้รับผิดชอบ</h3><div class="dp-resp" id="dp-resp"></div></div>
+    <div class="dp-section"><h3>สิ่งที่ส่งมอบ</h3><ul class="dp-deliv" id="dp-deliv"></ul></div>
+    <div class="dp-section" id="dp-detail-section" style="display:none"><h3>หมายเหตุ</h3><div id="dp-detail" style="font-size:12px;color:#444;line-height:1.6"></div></div>
   </div>
 </div>
-
 <script>
-const DAY_W=20;
+const DAY_W=20,TOTAL=117;
 const REF=new Date('2026-06-01');
 const TODAY_STR='2026-06-20';
+const TOTAL_W=TOTAL*DAY_W; // 2340px
 
 function off(ds){return Math.round((new Date(ds)-REF)/86400000)}
 function L(ds){return off(ds)*DAY_W}
 function W(s,e){return(off(e)-off(s)+1)*DAY_W}
-function fmtDate(ds){
-  const d=new Date(ds);
-  const th=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
-  return d.getDate()+' '+th[d.getMonth()]+' '+(d.getFullYear()+543);
-}
-
-const COLORS={
-  meeting:'#3266ad',planning:'#3266ad',dev:'#1a7a4a',
-  sit:'#d97706',uat:'#c0392b',integration:'#7c3aed',
-  security:'#7c3aed',docs:'#64748b',milestone:'#f59e0b',
-  deploy:'#0891b2',training:'#0d7a5f'
-};
-
-const TASKS=[
-  {ph:3,no:'3.1',name:'สรุปผลประชุมผลการดำเนินการงวดงานที่ 3',s:'2026-06-10',e:'2026-06-10',c:'meeting',
-   resp:'SI-IT, SI-HR / GJ-PM, GJ-BA',
-   deliverables:['รายงานการประชุม (MOM)'],
-   detail:'สรุปผลการประชุมและบันทึกมติ เพื่อทบทวนความคืบหน้าและประเด็นที่ต้องดำเนินการต่อในงวดงานที่ 3'},
-  {ph:3,no:'3.2',name:'สรุปงานที่จะต้องเปลี่ยนแปลงและวางแผนการดำเนินการต่อ',s:'2026-06-11',e:'2026-06-15',c:'planning',
-   resp:'SI-IT, SI-HR / GJ-PM, GJ-BA, GJ-TE, GJ-DevOps',
-   deliverables:['SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ'],
-   detail:'วิเคราะห์และสรุปงานที่ต้องเปลี่ยนแปลงตาม Enhancement Items 15 รายการ (SI_PMS_DEC_Y2026_001 V1.1) พร้อมวางแผนดำเนินการ'},
-  {ph:3,no:'3.3',name:'ประชุมยืนยันเอกสาร Enhancement Detail Design',s:'2026-06-16',e:'2026-06-16',c:'meeting',
-   resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',
-   deliverables:['SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ','ปรับปรุง Folder ส่งมอบงาน'],
-   detail:'ประชุมยืนยันเอกสาร Enhancement Detail Design พร้อมจัดระเบียบโฟลเดอร์ตามแผนงานเดิมและนำเสนอแผนงานใหม่'},
-  {ph:3,no:'3.4',name:'สรุปการขอขยายแผนงานงวดที่ 3 และ 4',s:'2026-06-18',e:'2026-06-18',c:'meeting',
-   resp:'SI-HR / GJ-PM, GJ-BA',
-   deliverables:['SI_PMS_หนังสือขอขยายระยะเวลาส่งมอบงานงวดที่ 3 และ 4_V1.0','SI_PMS_PPD_ปรับปรุงแผนปฏิบัติงาน_V2.0','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ_V1.1'],
-   detail:'นำเสนอและขออนุมัติขยายระยะเวลาส่งมอบงวด 3 (→ 31 ก.ค. 2569) และงวด 4 (→ 5 ต.ค. 2569) ต่อคณะกรรมการ'},
-  {ph:3,no:'3.5',name:'การพัฒนาระบบเพิ่มเติม ส่วนที่ 1 (MVP1)',s:'2026-06-18',e:'2026-07-03',c:'dev',
-   resp:'GJ-PM, GJ-BA, GJ-DEV',
-   deliverables:['SI_PMS_BRD (อัปเดต)','SI_PMS_DRS','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ'],
-   detail:'พัฒนา Enhancement Items: 1.1 บทบาทผู้บริหาร | 1.2 Role Management | 1.3 ระดับคะแนน | 1.4 Department Setting | 1.5 Default Form | 1.6 Evaluation Period | 1.7 Committee | 1.10 Infra/Admin Panel | 1.13 Ticket System (ระยะเวลา 16 วัน)'},
-  {ph:3,no:'3.6',name:'SIT#1 — ทดสอบการรวมระบบภายใน ส่วนที่ 1',s:'2026-07-06',e:'2026-07-07',c:'sit',
-   resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',
-   deliverables:['SIT Test Case MVP1'],
-   detail:'ทดสอบการรวมระบบภายในทีมพัฒนาสำหรับ MVP1 ก่อนส่งให้ผู้ใช้งานทดสอบ UAT'},
-  {ph:3,no:'3.7',name:'ติดตั้งและเตรียมบนระบบ UAT สำหรับ UAT#1',s:'2026-07-06',e:'2026-07-07',c:'sit',
-   resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',
-   deliverables:['ส่วนเพิ่มเติมส่วนที่ 1 สามารถใช้งานบน UAT ได้'],
-   detail:'Deploy MVP1 ขึ้นระบบ UAT Environment และตรวจสอบความพร้อมก่อนการทดสอบ UAT#1'},
-  {ph:3,no:'3.8',name:'UAT#1 — ทดสอบระบบโดยผู้ใช้งาน ส่วนที่ 1 (MVP1)',s:'2026-07-08',e:'2026-07-09',c:'uat',
-   resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',
-   deliverables:['UAT Test Case MVP1 (13 cases)','แก้ไขเอกสาร 11 cases: UAT_30_CMS, UAT_31_CMC, UAT_32_DEL, UAT_35_DEF, UAT_37_TKC, UAT_38_TKR, UAT_46_UPA, UAT_47_UPR, UAT_48_USA, UAT_49_UEV, UAT_50_NEX','Retest 2 cases: UAT_28_EVR, UAT_29_SEF'],
-   detail:'ทดสอบ MVP1 กับผู้ใช้งานจริงจาก SI-HR และ SI-IT จำนวน 13 Test Cases แบ่งเป็นแก้เอกสาร 11 cases และ Retest 2 cases'},
-  {ph:3,no:'3.9',name:'การพัฒนาระบบเพิ่มเติม ส่วนที่ 2 (MVP2)',s:'2026-07-06',e:'2026-07-13',c:'dev',
-   resp:'GJ-PM, GJ-BA, GJ-DEV',
-   deliverables:['SI_PMS_BRD (อัปเดต)','SI_PMS_DRS','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ (Enhance)'],
-   detail:'พัฒนา Enhancement Items: 1.8 Workflow/Delegate | 1.9 Workflow Period | 1.11 Report/Dashboard | 1.12 User PA Status | 1.14 Local User | 1.15 Notification (ดำเนินการคู่ขนานกับ SIT#1/UAT#1)'},
-  {ph:3,no:'3.10',name:'SIT#2 — ทดสอบการรวมระบบภายใน ส่วนที่ 2',s:'2026-07-14',e:'2026-07-15',c:'sit',
-   resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',
-   deliverables:['SIT Test Case MVP2'],
-   detail:'ทดสอบการรวมระบบภายในทีมพัฒนาสำหรับ MVP2'},
-  {ph:3,no:'3.11',name:'ติดตั้งและเตรียมบนระบบ UAT สำหรับ UAT#2',s:'2026-07-14',e:'2026-07-15',c:'sit',
-   resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',
-   deliverables:['ส่วนเพิ่มเติมส่วนที่ 2 สามารถใช้งานบน UAT ได้'],
-   detail:'Deploy MVP2 ขึ้นระบบ UAT Environment'},
-  {ph:3,no:'3.12',name:'UAT#2 — ทดสอบระบบโดยผู้ใช้งาน ส่วนที่ 2 (MVP2)',s:'2026-07-16',e:'2026-07-17',c:'uat',
-   resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',
-   deliverables:['UAT Test Case MVP2 (17 cases)','แก้ไขเอกสาร 5 cases: UAT_02_ROL, UAT_10_STF, UAT_22_PNT, UAT_51_LCU, UAT_54_ISS (ใหม่)','Retest 12 cases: UAT_01_MEN, UAT_25_WFD, UAT_26_WFE, UAT_33_ASG, UAT_34_DAS, UAT_36_CEV, UAT_39_DPE, UAT_40_DCS, UAT_41_DCG, UAT_43_DES, UAT_44_RPT, UAT_53_NOT'],
-   detail:'ทดสอบ MVP2 กับผู้ใช้งานจริง 17 Test Cases'},
-  {ph:3,no:'3.13',name:'ทดสอบและเตรียม System Integration',s:'2026-07-14',e:'2026-07-23',c:'integration',
-   resp:'GJ-PM, GJ-BA, GJ-TE',
-   deliverables:['SI_PMS_เอกสารการเตรียมและติดตั้งระบบ','SI_PMS_เอกสารรายงานผลการติดตั้งและการทดสอบการเชื่อมต่อระบบ'],
-   detail:'ทดสอบการเชื่อมโยงและบูรณาการระบบทั้งหมด พร้อมจัดทำเอกสารผลการทดสอบ'},
-  {ph:3,no:'3.14',name:'Security Scan — ตรวจสอบ Source Code',s:'2026-07-14',e:'2026-07-23',c:'security',
-   resp:'SI-IT / GJ-DEV, GJ-DevOps, GJ-TE',
-   deliverables:['SI_PMS_เอกสารการทดสอบความปลอดภัย'],
-   detail:'ตรวจสอบ Source Code ที่มีการเปลี่ยนแปลงด้วย Security Scanning Tool พร้อมทดสอบ Pentest ในระดับ Medium/High'},
-  {ph:3,no:'3.15',name:'ทดสอบการเชื่อมต่อข้อมูลจากระบบอื่น',s:'2026-07-10',e:'2026-07-23',c:'integration',
-   resp:'SI-IT / GJ-DEV, GJ-BA, GJ-TE',
-   deliverables:['SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อและโอนย้ายข้อมูล'],
-   detail:'ทดสอบการเชื่อมต่อข้อมูลจากระบบภายนอกและ Data Migration'},
-  {ph:3,no:'3.16',name:'Infrastructure + FSD Document',s:'2026-07-15',e:'2026-07-21',c:'docs',
-   resp:'GJ-DEV, GJ-BA, GJ-TE',
-   deliverables:['SI_PMS_FSD','SI_PMS_BRD','SI_PMS_UX/UI','SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ'],
-   detail:'จัดทำและตรวจสอบโครงสร้างพื้นฐานระบบ (Infrastructure) พร้อมสรุปและรายงานผลข้อกำหนดการทำงาน (FSD)'},
-  {ph:3,no:'3.17',name:'UAT#3 — ทดสอบภาพรวมระบบทั้งหมด (25 cases)',s:'2026-07-23',e:'2026-07-24',c:'uat',
-   resp:'SI-HR, SI-IT / GJ-DEV, GJ-BA',
-   deliverables:['SI_PMS_เอกสารผลการทดสอบการใช้งาน (UAT#3)'],
-   detail:'ทดสอบ Original Test Cases 25 รายการ ครอบคลุมภาพรวมระบบทั้งหมดก่อนส่งมอบงวด 3'},
-  {ph:3,no:'3.18',name:'สรุปผลและเตรียมจัดส่งเอกสารงวด 3',s:'2026-07-13',e:'2026-07-24',c:'docs',
-   resp:'SI-HR, SI-IT / GJ-DEV, GJ-BA',
-   deliverables:['SI_PMS_FSD (TOR 3.1)','SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ (TOR 3.1, 3.7)','SI_PMS_เอกสารการเตรียมและติดตั้งระบบ (TOR 3.6)','SI_PMS_เอกสารผลการทดสอบการใช้งาน (Script + Result 54 files, TOR 3.2, 3.4)','SI_PMS_เอกสารรายงานผลการติดตั้งและการทดสอบ (TOR 3.3)','SI_PMS_เอกสารการทดสอบความปลอดภัย (TOR 3.5)','SI_PMS_เอกสารการทดสอบประสิทธิภาพ (TOR 3.5)','SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อและโอนย้ายข้อมูล (TOR 3.7)'],
-   detail:'รวบรวมและจัดทำเอกสารทั้งหมดตาม TOR 3.1–3.7 เพื่อส่งมอบงวด 3 รวม TestFile 54 ไฟล์ (SIT54 + UAT54)'},
-  {ph:3,no:'3.19',name:'ส่งมอบงวดที่ 3',s:'2026-07-31',e:'2026-07-31',c:'milestone',
-   resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',
-   deliverables:['เอกสารครบตามรายการข้อ 3.18 (TOR 3.1–3.7)'],
-   detail:'นำเสนอและส่งมอบงานงวดที่ 3 ให้คณะกรรมการตรวจรับพัสดุ พร้อมขอรับเงิน 30%'},
-  {ph:4,no:'4.1',name:'Production Readiness — ติดตั้งบน PRD',s:'2026-08-03',e:'2026-08-14',c:'deploy',
-   resp:'GJ-DEV, GJ-DevOps / SI-IT',
-   deliverables:['SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อและโอนย้ายข้อมูล','SI_PMS_เอกสารการเตรียมและติดตั้งระบบ (คู่มือผู้ดูแลระบบ)'],
-   detail:'เตรียมความพร้อมและติดตั้งระบบบนสภาพแวดล้อมจริง (Production) ประสานงานกับ SI-IT ⚠️ วันหยุด 12/8 กระทบ Task นี้'},
-  {ph:4,no:'4.2',name:'คู่มือผู้ใช้ + VDO Tutorial + Q&A',s:'2026-08-13',e:'2026-08-28',c:'training',
-   resp:'GJ-BA, GJ-DEV (12 วัน)',
-   deliverables:['SI_PMS_คู่มือสำหรับผู้ใช้งานระบบ (ฉบับสมบูรณ์)','SI_PMS_คู่มือแนะนำการแก้ไขปัญหาเบื้องต้น','VDO แนะนำสำหรับผู้ใช้งาน'],
-   detail:'จัดทำคู่มือผู้ใช้งานฉบับสมบูรณ์ พร้อม VDO Tutorial และเตรียม Q&A สำหรับการฝึกอบรม'},
-  {ph:4,no:'4.3',name:'Production System Test',s:'2026-08-20',e:'2026-08-26',c:'sit',
-   resp:'GJ-DEV, GJ-QA / SI-IT',
-   deliverables:['SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ','SI_PMS_เอกสารการทดสอบประสิทธิภาพของระบบ'],
-   detail:'ทดสอบความพร้อมบนระบบจริง Production ครอบคลุม Performance Test'},
-  {ph:4,no:'4.4',name:'สรุปเอกสารงวดที่ 4 — ฉบับสมบูรณ์',s:'2026-08-13',e:'2026-08-28',c:'docs',
-   resp:'GJ-PM, GJ-BA (12 วัน)',
-   deliverables:['SI_PMS_FSD','SI_PMS_BRD','SI_PMS_UX/UI','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ','SI_PMS_เอกสารรายงานผลการจัดทำระบบ','SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ','SI_PMS_เอกสารการเตรียมและติดตั้งระบบ','SI_PMS_เอกสารการทดสอบประสิทธิภาพ','SI_PMS_เอกสารการทดสอบความปลอดภัย','SI_PMS_เอกสารผลการทดสอบการใช้งาน','SI_PMS_เอกสารรายงานผลการติดตั้งฯ','SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อฯ','SI_PMS_เอกสารการเตรียมและติดตั้งระบบ (คู่มือผู้ดูแล)','SI_PMS_คู่มือสำหรับผู้ใช้งาน (ฉบับสมบูรณ์)'],
-   detail:'รวบรวมและจัดทำเอกสารทั้งหมดสำหรับส่งมอบงวด 4 ฉบับสมบูรณ์'},
-  {ph:4,no:'4.5',name:'Training 750 คน + Admin (บน UAT Environment)',s:'2026-09-02',e:'2026-09-25',c:'training',
-   resp:'GJ-BA, GJ-DEV / SI-HR (18 วัน)',
-   deliverables:['Training Report','Satisfaction Survey'],
-   detail:'ฝึกอบรมผู้ใช้งานทั้งหมด 750 คน และผู้ดูแลระบบ (Admin) บน UAT Environment — ยืนยันแล้วว่าใช้ UAT ไม่ใช่ Production'},
-];
-
-const MONTHS=[
-  {label:'มิถุนายน 2569',days:30,bg:'#1F4E79'},
-  {label:'กรกฎาคม 2569',days:31,bg:'#14375E'},
-  {label:'สิงหาคม 2569',days:31,bg:'#1a5276'},
-  {label:'กันยายน 2569',days:25,bg:'#0a3d62'}
-];
-const TOTAL=117;
-
+function fmtDate(ds){const d=new Date(ds);const th=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];return d.getDate()+' '+th[d.getMonth()]+' '+(d.getFullYear()+543)}
 function isWeekend(i){const w=new Date(REF.getTime()+i*86400000).getDay();return w===0||w===6}
 function isToday(i){return new Date(REF.getTime()+i*86400000).toISOString().slice(0,10)===TODAY_STR}
-function getStatus(s,e){
-  const t=new Date(TODAY_STR);
-  const sd=new Date(s),ed=new Date(e);
-  if(ed<t) return {label:'เสร็จแล้ว',cls:'chip-done'};
-  if(sd<=t && t<=ed) return {label:'กำลังดำเนินการ',cls:'chip-active'};
-  return {label:'รอดำเนินการ',cls:'chip-pending'};
-}
+function getStatus(s,e){const t=new Date(TODAY_STR),sd=new Date(s),ed=new Date(e);if(ed<t)return{label:'เสร็จแล้ว',cls:'chip-done'};if(sd<=t&&t<=ed)return{label:'กำลังดำเนินการ',cls:'chip-active'};return{label:'รอดำเนินการ',cls:'chip-pending'}}
 
-const g=document.getElementById('gantt');
-let mhdr='<div style="display:flex;margin-left:280px">';
-MONTHS.forEach(m=>{mhdr+=`<div class="month-hdr" style="width:${m.days*DAY_W}px;background:${m.bg}">${m.label}</div>`;});
-mhdr+='</div>';
+const COLORS={meeting:'#3266ad',planning:'#3266ad',dev:'#1a7a4a',sit:'#d97706',uat:'#c0392b',integration:'#7c3aed',security:'#7c3aed',docs:'#64748b',milestone:'#f59e0b',deploy:'#0891b2',training:'#0d7a5f'};
+const MONTHS=[{label:'มิถุนายน 2569',days:30,bg:'#1F4E79'},{label:'กรกฎาคม 2569',days:31,bg:'#14375E'},{label:'สิงหาคม 2569',days:31,bg:'#1a5276'},{label:'กันยายน 2569',days:25,bg:'#0a3d62'}];
 
-let drow='<div class="days-row">';
-for(let i=0;i<TOTAL;i++){
-  const dt=new Date(REF.getTime()+i*86400000);
-  const cls=isToday(i)?'td':isWeekend(i)?'wk':'';
-  drow+=`<div class="dc ${cls}" style="width:${DAY_W}px">${dt.getDate()}</div>`;
-}
-drow+='</div>';
+const TASKS=[
+  {ph:3,no:'3.1',name:'สรุปผลประชุมผลการดำเนินการงวดงานที่ 3',s:'2026-06-10',e:'2026-06-10',c:'meeting',resp:'SI-IT, SI-HR / GJ-PM, GJ-BA',deliverables:['รายงานการประชุม (MOM)'],detail:'สรุปผลการประชุมและบันทึกมติ เพื่อทบทวนความคืบหน้าและประเด็นที่ต้องดำเนินการต่อในงวดงานที่ 3'},
+  {ph:3,no:'3.2',name:'สรุปงานที่จะต้องเปลี่ยนแปลงและวางแผนการดำเนินการต่อ',s:'2026-06-11',e:'2026-06-15',c:'planning',resp:'SI-IT, SI-HR / GJ-PM, GJ-BA, GJ-TE, GJ-DevOps',deliverables:['SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ'],detail:'วิเคราะห์และสรุปงานที่ต้องเปลี่ยนแปลงตาม Enhancement Items 15 รายการ พร้อมวางแผนดำเนินการ'},
+  {ph:3,no:'3.3',name:'ประชุมยืนยันเอกสาร Enhancement Detail Design',s:'2026-06-16',e:'2026-06-16',c:'meeting',resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',deliverables:['SI_PMS_เอกสารรับรองรายละเอียดการออกแบบส่วนปรับปรุงระบบ','ปรับปรุง Folder ส่งมอบงาน'],detail:'ประชุมยืนยันเอกสาร Enhancement Detail Design พร้อมจัดระเบียบโฟลเดอร์'},
+  {ph:3,no:'3.4',name:'สรุปการขอขยายแผนงานงวดที่ 3 และ 4',s:'2026-06-18',e:'2026-06-18',c:'meeting',resp:'SI-HR / GJ-PM, GJ-BA',deliverables:['SI_PMS_หนังสือขอขยายระยะเวลาส่งมอบงาน V1.0','SI_PMS_PPD_ปรับปรุงแผนปฏิบัติงาน V2.0'],detail:'นำเสนอและขออนุมัติขยายระยะเวลางวด 3 (→31 ก.ค. 2569) และงวด 4 (→5 ต.ค. 2569)'},
+  {ph:3,no:'3.5',name:'การพัฒนาระบบเพิ่มเติม ส่วนที่ 1 (MVP1)',s:'2026-06-18',e:'2026-07-03',c:'dev',resp:'GJ-PM, GJ-BA, GJ-DEV',deliverables:['SI_PMS_BRD (อัปเดต)','SI_PMS_DRS','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบ'],detail:'พัฒนา Items 1.1–1.7, 1.10, 1.13 (16 วัน)'},
+  {ph:3,no:'3.6',name:'SIT#1 — ทดสอบการรวมระบบภายใน ส่วนที่ 1',s:'2026-07-06',e:'2026-07-07',c:'sit',resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',deliverables:['SIT Test Case MVP1'],detail:'ทดสอบการรวมระบบภายในทีมพัฒนาสำหรับ MVP1'},
+  {ph:3,no:'3.7',name:'ติดตั้งและเตรียมบนระบบ UAT สำหรับ UAT#1',s:'2026-07-06',e:'2026-07-07',c:'sit',resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',deliverables:['ส่วนเพิ่มเติมส่วนที่ 1 พร้อมใช้งานบน UAT'],detail:'Deploy MVP1 ขึ้น UAT Environment'},
+  {ph:3,no:'3.8',name:'UAT#1 — ทดสอบระบบโดยผู้ใช้งาน ส่วนที่ 1 (MVP1)',s:'2026-07-08',e:'2026-07-09',c:'uat',resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',deliverables:['UAT Test Case MVP1 (13 cases)','แก้เอกสาร 11 cases','Retest 2 cases: UAT_28_EVR, UAT_29_SEF'],detail:'ทดสอบ MVP1 กับผู้ใช้งานจริง 13 Test Cases'},
+  {ph:3,no:'3.9',name:'การพัฒนาระบบเพิ่มเติม ส่วนที่ 2 (MVP2)',s:'2026-07-06',e:'2026-07-13',c:'dev',resp:'GJ-PM, GJ-BA, GJ-DEV',deliverables:['SI_PMS_BRD (อัปเดต)','SI_PMS_DRS','SI_PMS_เอกสารรับรองรายละเอียดการออกแบบ (Enhance)'],detail:'พัฒนา Items 1.8, 1.9, 1.11, 1.12, 1.14, 1.15 คู่ขนานกับ SIT#1/UAT#1'},
+  {ph:3,no:'3.10',name:'SIT#2 — ทดสอบการรวมระบบภายใน ส่วนที่ 2',s:'2026-07-14',e:'2026-07-15',c:'sit',resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',deliverables:['SIT Test Case MVP2'],detail:'ทดสอบการรวมระบบสำหรับ MVP2'},
+  {ph:3,no:'3.11',name:'ติดตั้งและเตรียมบนระบบ UAT สำหรับ UAT#2',s:'2026-07-14',e:'2026-07-15',c:'sit',resp:'GJ-DEV, GJ-BA, GJ-QA, GJ-DevOps',deliverables:['ส่วนเพิ่มเติมส่วนที่ 2 พร้อมใช้งานบน UAT'],detail:'Deploy MVP2 ขึ้น UAT Environment'},
+  {ph:3,no:'3.12',name:'UAT#2 — ทดสอบระบบโดยผู้ใช้งาน ส่วนที่ 2 (MVP2)',s:'2026-07-16',e:'2026-07-17',c:'uat',resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',deliverables:['UAT Test Case MVP2 (17 cases)','แก้เอกสาร 5 cases','Retest 12 cases'],detail:'ทดสอบ MVP2 กับผู้ใช้งานจริง 17 Test Cases'},
+  {ph:3,no:'3.13',name:'ทดสอบและเตรียม System Integration',s:'2026-07-14',e:'2026-07-23',c:'integration',resp:'GJ-PM, GJ-BA, GJ-TE',deliverables:['SI_PMS_เอกสารการเตรียมและติดตั้งระบบ','SI_PMS_เอกสารรายงานผลการติดตั้งและการทดสอบการเชื่อมต่อระบบ'],detail:'ทดสอบการเชื่อมโยงและบูรณาการระบบทั้งหมด'},
+  {ph:3,no:'3.14',name:'Security Scan — ตรวจสอบ Source Code',s:'2026-07-14',e:'2026-07-23',c:'security',resp:'SI-IT / GJ-DEV, GJ-DevOps, GJ-TE',deliverables:['SI_PMS_เอกสารการทดสอบความปลอดภัย'],detail:'ตรวจสอบ Source Code ที่มีการเปลี่ยนแปลงด้วย Security Scanning Tool + Pentest'},
+  {ph:3,no:'3.15',name:'ทดสอบการเชื่อมต่อข้อมูลจากระบบอื่น',s:'2026-07-10',e:'2026-07-23',c:'integration',resp:'SI-IT / GJ-DEV, GJ-BA, GJ-TE',deliverables:['SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อและโอนย้ายข้อมูล'],detail:'ทดสอบการเชื่อมต่อข้อมูลจากระบบภายนอก + Data Migration'},
+  {ph:3,no:'3.16',name:'Infrastructure + FSD Document',s:'2026-07-15',e:'2026-07-21',c:'docs',resp:'GJ-DEV, GJ-BA, GJ-TE',deliverables:['SI_PMS_FSD','SI_PMS_BRD','SI_PMS_UX/UI','SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ'],detail:'จัดทำและตรวจสอบโครงสร้างพื้นฐานระบบ + FSD'},
+  {ph:3,no:'3.17',name:'UAT#3 — ทดสอบภาพรวมระบบทั้งหมด (25 cases)',s:'2026-07-23',e:'2026-07-24',c:'uat',resp:'SI-HR, SI-IT / GJ-DEV, GJ-BA',deliverables:['SI_PMS_เอกสารผลการทดสอบการใช้งาน (UAT#3)'],detail:'ทดสอบ Original 25 Test Cases ครอบคลุมภาพรวมก่อนส่งมอบงวด 3'},
+  {ph:3,no:'3.18',name:'สรุปผลและเตรียมจัดส่งเอกสารงวด 3',s:'2026-07-13',e:'2026-07-24',c:'docs',resp:'SI-HR, SI-IT / GJ-DEV, GJ-BA',deliverables:['SI_PMS_FSD (TOR 3.1)','SI_PMS_เอกสารผลการทดสอบ Script+Result 54 files (TOR 3.2, 3.4)','SI_PMS_เอกสารรายงานผลการติดตั้ง (TOR 3.3)','SI_PMS_เอกสารการทดสอบความปลอดภัย+ประสิทธิภาพ (TOR 3.5)','SI_PMS_เอกสารการเตรียมและติดตั้งระบบ (TOR 3.6)','SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ (TOR 3.7)'],detail:'รวบรวมและจัดทำเอกสารทั้งหมดตาม TOR 3.1–3.7'},
+  {ph:3,no:'3.19',name:'ส่งมอบงวดที่ 3',s:'2026-07-31',e:'2026-07-31',c:'milestone',resp:'SI-HR, SI-IT / GJ-PM, GJ-BA',deliverables:['เอกสารครบตามรายการ TOR 3.1–3.7'],detail:'ส่งมอบงานงวดที่ 3 ให้คณะกรรมการตรวจรับพัสดุ พร้อมขอรับเงิน 30%'},
+  {ph:4,no:'4.1',name:'Production Readiness — ติดตั้งบน PRD',s:'2026-08-03',e:'2026-08-14',c:'deploy',resp:'GJ-DEV, GJ-DevOps / SI-IT',deliverables:['SI_PMS_เอกสารรายงานสรุปผลการเชื่อมต่อและโอนย้ายข้อมูล','คู่มือผู้ดูแลระบบ'],detail:'เตรียมความพร้อมและติดตั้งระบบบน Production ⚠️ วันหยุด 12/8 กระทบ Task นี้'},
+  {ph:4,no:'4.2',name:'คู่มือผู้ใช้ + VDO Tutorial + Q&A',s:'2026-08-13',e:'2026-08-28',c:'training',resp:'GJ-BA, GJ-DEV (12 วัน)',deliverables:['SI_PMS_คู่มือผู้ใช้งานฉบับสมบูรณ์','VDO Tutorial'],detail:'จัดทำคู่มือผู้ใช้งาน + VDO + Q&A สำหรับฝึกอบรม'},
+  {ph:4,no:'4.3',name:'Production System Test',s:'2026-08-20',e:'2026-08-26',c:'sit',resp:'GJ-DEV, GJ-QA / SI-IT',deliverables:['SI_PMS_เอกสารรายงานผลการวางโครงสร้างระบบ','SI_PMS_เอกสารการทดสอบประสิทธิภาพ'],detail:'ทดสอบความพร้อมบน Production + Performance Test'},
+  {ph:4,no:'4.4',name:'สรุปเอกสารงวดที่ 4 — ฉบับสมบูรณ์',s:'2026-08-13',e:'2026-08-28',c:'docs',resp:'GJ-PM, GJ-BA (12 วัน)',deliverables:['เอกสารครบทุกรายการ TOR งวด 4 (14 ไฟล์)'],detail:'รวบรวมและจัดทำเอกสารทั้งหมดสำหรับส่งมอบงวด 4 ฉบับสมบูรณ์'},
+  {ph:4,no:'4.5',name:'Training 750 คน + Admin (บน UAT Environment)',s:'2026-09-02',e:'2026-09-25',c:'training',resp:'GJ-BA, GJ-DEV / SI-HR (18 วัน)',deliverables:['Training Report','Satisfaction Survey'],detail:'ฝึกอบรมผู้ใช้งาน 750 คน + Admin บน UAT Environment (ยืนยันแล้ว)'},
+];
 
 const todayOff=off(TODAY_STR);
-const todayPx=(todayOff*DAY_W+DAY_W/2);
+const todayPx=todayOff*DAY_W+DAY_W/2;
 
+const g=document.getElementById('gantt');
+
+// === MONTH HEADER ===
+let mhdr=`<div style="display:flex;margin-left:280px;width:${TOTAL_W}px;flex-shrink:0">`;
+MONTHS.forEach(m=>{mhdr+=`<div style="width:${m.days*DAY_W}px;flex-shrink:0;text-align:center;font-size:12px;font-weight:600;padding:6px 0;border-right:1px solid #bbb;border-bottom:1px solid #bbb;color:#fff;background:${m.bg}">${m.label}</div>`;});
+mhdr+='</div>';
+
+// === DAY NUMBERS ROW ===
+let drow=`<div style="display:flex;margin-left:280px;width:${TOTAL_W}px;flex-shrink:0;border-bottom:2px solid #333;position:relative">`;
+// Weekend column backgrounds as absolute divs
+let wkBg='';
+for(let i=0;i<TOTAL;i++){
+  const dt=new Date(REF.getTime()+i*86400000);
+  const isTd=isToday(i);
+  const isWk=isWeekend(i);
+  const bg=isTd?'rgba(245,158,11,.15)':isWk?'#f5f5f5':'transparent';
+  const fc=isTd?'#f59e0b':isWk?'#ccc':'#888';
+  const fw=isTd?'700':'400';
+  drow+=`<div style="width:${DAY_W}px;flex-shrink:0;text-align:center;font-size:9px;color:${fc};font-weight:${fw};padding:3px 0;border-right:1px solid #eee;background:${bg}">${dt.getDate()}</div>`;
+}
+// Today flag
+drow+=`<div style="position:absolute;top:0;bottom:0;left:${todayPx}px;width:2px;background:#f59e0b;opacity:.9"></div>`;
+drow+='</div>';
+
+// === TASKS ===
 let todayTasks=[];
 let rows='';
 let lastPh=0;
 TASKS.forEach((t,idx)=>{
   if(t.ph!==lastPh){
-    const pcolor=t.ph===3?'#1a7a4a':'#0891b2';
-    const plabel=t.ph===3
-      ?'งวดที่ 3 — System Development &amp; Testing &nbsp;|&nbsp; ส่งมอบ 31 ก.ค. 2569'
-      :'งวดที่ 4 — Deployment &amp; Training &nbsp;|&nbsp; ส่งมอบ 5 ต.ค. 2569';
-    rows+=`<div class="phase-hdr"><div class="ph-label" style="color:${pcolor}">${plabel}</div></div>`;
+    const pc=t.ph===3?'#1a7a4a':'#0891b2';
+    const pl=t.ph===3?'งวดที่ 3 — System Development &amp; Testing &nbsp;|&nbsp; ส่งมอบ 31 ก.ค. 2569':'งวดที่ 4 — Deployment &amp; Training &nbsp;|&nbsp; ส่งมอบ 5 ต.ค. 2569';
+    rows+=`<div style="display:flex;background:#eef2f7;border-bottom:1px solid #d0d8e4"><div style="font-size:12px;font-weight:600;padding:5px 8px;color:${pc};width:280px;min-width:280px;border-right:1px solid #d0d8e4">${pl}</div><div style="width:${TOTAL_W}px;flex-shrink:0;position:relative"><div style="position:absolute;top:0;bottom:0;left:${todayPx}px;width:2px;background:#f59e0b;opacity:.5"></div></div></div>`;
     lastPh=t.ph;
   }
   const st=getStatus(t.s,t.e);
-  if(st.cls==='chip-active') todayTasks.push(t);
+  if(st.cls==='chip-active') todayTasks.push({t,idx});
   const isMile=t.c==='milestone';
   let bar;
   if(isMile){
     const lv=L(t.s)+DAY_W/2-7;
-    bar=`<div class="bar ms" style="left:${lv}px;background:${COLORS[t.c]}" onclick="openPanel(${idx})" title="คลิกเพื่อดูรายละเอียด: ${t.no}"></div>`;
+    bar=`<div class="bar ms" style="left:${lv}px;background:${COLORS[t.c]}" onclick="openPanel(${idx})"></div>`;
   } else {
-    bar=`<div class="bar" style="left:${L(t.s)}px;width:${W(t.s,t.e)}px;background:${COLORS[t.c]}" onclick="openPanel(${idx})" title="คลิกเพื่อดูรายละเอียด">${t.name}</div>`;
+    bar=`<div class="bar" style="left:${L(t.s)}px;width:${W(t.s,t.e)}px;background:${COLORS[t.c]}" onclick="openPanel(${idx})">${t.name}</div>`;
   }
+  // Weekend/today column shading strips
+  let strips='';
+  for(let i=0;i<TOTAL;i++){
+    if(isWeekend(i)){strips+=`<div style="position:absolute;top:0;bottom:0;left:${i*DAY_W}px;width:${DAY_W}px;background:#f5f5f5;z-index:0"></div>`;}
+    if(isToday(i)){strips+=`<div style="position:absolute;top:0;bottom:0;left:${i*DAY_W}px;width:${DAY_W}px;background:rgba(245,158,11,.1);z-index:0"></div>`;}
+  }
+  // Today line
+  strips+=`<div style="position:absolute;top:0;bottom:0;left:${todayPx}px;width:2px;background:#f59e0b;opacity:.8;z-index:4;pointer-events:none"></div>`;
+
   rows+=`<div class="task-row" id="tr-${idx}">
     <div class="tl" onclick="openPanel(${idx})"><span class="tno">${t.no}</span><span class="tnm">${t.name}</span></div>
-    <div class="tbars" style="width:${TOTAL*DAY_W}px">${bar}</div>
+    <div class="tbars" style="width:${TOTAL_W}px">${strips}${bar}</div>
   </div>`;
 });
 
-g.innerHTML=mhdr+drow+rows;
+// Today marker on day row
+const todayDayEl=`<div style="position:absolute;top:-20px;left:${todayPx}px;transform:translateX(-50%);background:#f59e0b;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap">วันนี้</div>`;
 
-const barArea=g.querySelector('.days-row');
-const todayLineHTML=`<div class="today-line" style="left:${todayPx}px">
-  <div class="today-flag">วันนี้ 20 มิ.ย.</div>
-</div>`;
+g.innerHTML=mhdr+drow.replace('</div>',todayDayEl+'</div>')+rows;
+g.style.minWidth=(280+TOTAL_W)+'px';
 
-const rows_els=g.querySelectorAll('.task-row');
-rows_els.forEach(r=>{
-  const bars=r.querySelector('.tbars');
-  if(bars){
-    const tl=document.createElement('div');
-    tl.className='today-line';
-    tl.style.left=todayPx+'px';
-    bars.appendChild(tl);
-  }
-});
-
+// Today panel
 const tp=document.getElementById('today-tasks');
 if(todayTasks.length===0){tp.textContent='ไม่มีกิจกรรมที่กำลังดำเนินการ';}
-else{tp.innerHTML=todayTasks.map(t=>`<span onclick="openPanel(${TASKS.indexOf(t)})" style="cursor:pointer">${t.no} ${t.name}</span>`).join('');}
+else{tp.innerHTML=todayTasks.map(({t,idx})=>`<span onclick="openPanel(${idx})">${t.no} ${t.name}</span>`).join('');}
 
 let currentIdx=-1;
 function openPanel(idx){
@@ -348,16 +233,9 @@ function openPanel(idx){
   document.getElementById('dp-end').textContent=fmtDate(t.e);
   document.getElementById('dp-resp').textContent=t.resp;
   document.getElementById('dp-status-row').innerHTML=`<span class="dp-status-chip ${st.cls}">${st.label}</span>`;
-  const dl=document.getElementById('dp-deliv');
-  dl.innerHTML=t.deliverables.map(d=>{
-    const isUAT=d.startsWith('UAT_')||d.includes('Retest')||d.includes('cases');
-    const isNote=d.startsWith('⚠')||d.startsWith('หมาย');
-    return `<li class="${isUAT?'uat-item':isNote?'note-item':''}">${d}</li>`;
-  }).join('');
-  const dd=document.getElementById('dp-detail');
-  const ds=document.getElementById('dp-detail-section');
-  if(t.detail){dd.textContent=t.detail;ds.style.display='block';}
-  else{ds.style.display='none';}
+  document.getElementById('dp-deliv').innerHTML=t.deliverables.map(d=>`<li>${d}</li>`).join('');
+  const dd=document.getElementById('dp-detail'),ds=document.getElementById('dp-detail-section');
+  if(t.detail){dd.textContent=t.detail;ds.style.display='block';}else{ds.style.display='none';}
   if(currentIdx>=0){const pb=document.querySelector(`#tr-${currentIdx} .bar`);if(pb)pb.classList.remove('active');}
   const nb=document.querySelector(`#tr-${idx} .bar`);if(nb)nb.classList.add('active');
   currentIdx=idx;
