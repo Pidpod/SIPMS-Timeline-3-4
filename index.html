@@ -69,7 +69,7 @@ body{font-family:'Sarabun','TH Sarabun New','Segoe UI',sans-serif;font-size:12px
     <h1>ปฏิทินกิจกรรม SI-PMS — งวด 3 &amp; 4</h1>
     <p>มิถุนายน – กันยายน 2569 &nbsp;|&nbsp; 24 กิจกรรม &nbsp;|&nbsp; คลิกที่ชื่อหรือ bar เพื่อดูรายละเอียด</p>
   </div>
-  <span class="today-badge">📅 วันนี้ 20 มิ.ย. 2569</span>
+  <span class="today-badge" id="hdr-today">📅 วันนี้ ...</span>
 </div>
 <div class="today-panel">
   <div class="tp-date">📌 วันนี้กำลังดำเนินการ:</div>
@@ -107,7 +107,7 @@ body{font-family:'Sarabun','TH Sarabun New','Segoe UI',sans-serif;font-size:12px
 <script>
 const DAY_W=20,TOTAL=117;
 const REF=new Date('2026-06-01');
-const TODAY_STR='2026-06-20';
+const TODAY_STR=new Date().toISOString().slice(0,10);
 const TOTAL_W=TOTAL*DAY_W; // 2340px
 
 function off(ds){return Math.round((new Date(ds)-REF)/86400000)}
@@ -148,6 +148,14 @@ const TASKS=[
   {ph:4,no:'4.5',name:'Training 750 คน + Admin (บน UAT Environment)',s:'2026-09-02',e:'2026-09-25',c:'training',resp:'GJ-BA, GJ-DEV / SI-HR (18 วัน)',deliverables:['Training Report','Satisfaction Survey'],detail:'ฝึกอบรมผู้ใช้งาน 750 คน + Admin บน UAT Environment (ยืนยันแล้ว)'},
 ];
 
+// Dynamic header badge
+(function(){
+  const d=new Date();
+  const th=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  const label=d.getDate()+' '+th[d.getMonth()]+' '+(d.getFullYear()+543);
+  const el=document.getElementById('hdr-today');
+  if(el) el.textContent='📅 วันนี้ '+label;
+})();
 const todayOff=off(TODAY_STR);
 const todayPx=todayOff*DAY_W+DAY_W/2;
 
